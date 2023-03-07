@@ -19,9 +19,12 @@ const verifyEmail = async (email) => {
   return user;
 };
 
+const getUserById = (id) => User.findOne({ where: { id } });
+
 module.exports = {
   login,
   createUser,
   verifyEmail,
   getUsers,
+  getUserById,
 };
