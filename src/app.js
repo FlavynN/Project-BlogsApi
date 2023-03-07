@@ -2,6 +2,8 @@ const express = require('express');
 
 // ...
 
+const routes = require('./routes');
+
 const app = express();
 
 // não remova ou mova esse endpoint
@@ -10,6 +12,7 @@ app.get('/', (_request, response) => {
 });
 
 app.use(express.json());
+app.use(routes);
 
 // ...
 
