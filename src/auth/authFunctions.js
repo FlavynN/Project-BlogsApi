@@ -7,7 +7,7 @@ const JWT_CONFIG = {
   expiresIn: '7d',
 };
 
-const createToken = (data) => jwt.sign({ data }, secret, JWT_CONFIG);
+const createToken = (payload) => jwt.sign({ payload }, secret, JWT_CONFIG);
 
 const verifyToken = (token) => jwt.verify(token, secret);
 
