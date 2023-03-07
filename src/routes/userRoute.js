@@ -3,16 +3,16 @@ const express = require('express');
 const userRoute = express.Router();
 
 const { validToken } = require('../middleware/validateToken');
-const { userControler } = require('../controllers');
+const { userController } = require('../controllers');
 const { validateName, validatePassword, validateEmail } = require('../middleware/validateUser');
 
 userRoute.post('/',
   validateName,
   validatePassword,
   validateEmail,
-  userControler.createUser);
+  userController.createUser);
 
-userRoute.get('/', validToken, userControler.getUsers);
-userRoute.get('/:id', validToken, userControler.getUserById);
+userRoute.get('/', validToken, userController.getUsers);
+userRoute.get('/:id', validToken, userController.getUserById);
 
 module.exports = userRoute;
