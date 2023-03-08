@@ -14,5 +14,6 @@ userRoute.post('/',
 
 userRoute.get('/', validToken, userController.getUsers);
 userRoute.get('/:id', validToken, userController.getUserById);
+userRoute.delete('/me', validToken, userController.deleteUser);
 
 module.exports = userRoute;

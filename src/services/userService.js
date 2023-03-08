@@ -21,11 +21,16 @@ const verifyEmail = async (email) => {
 
 const getUserById = (id) => User.findOne({ where: { id } });
 
+const deleteUser = async (id) => {
+  await User.destroy({ where: { id } });
+};
+
 module.exports = {
   login,
   createUser,
   verifyEmail,
   getUsers,
   getUserById,
+  deleteUser,
 
 };
