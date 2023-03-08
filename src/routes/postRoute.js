@@ -6,5 +6,6 @@ const { validToken } = require('../middleware/validateToken');
 
 postRoute.post('/', validToken, postController.createPost);
 postRoute.get('/', validToken, postController.getAllPosts);
+postRoute.get('/:id', validToken, postController.getPostByid);
 
 module.exports = postRoute;
