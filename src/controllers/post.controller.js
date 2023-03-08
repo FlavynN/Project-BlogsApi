@@ -1,17 +1,22 @@
-const { postService } = require('../services');
+const { postService, categoriesService } = require('../services');
 
 const createPost = async (req, res) => {
-  const payload = req.data;
+  const { title, content, categoryIds } = req.body;
+  const userId = req.payload.id;
+  const verifyCategory = await categoriesService.getCategoryById(categoryIds);
 
-  const post = await postService.createPost(
-    {
-      title: req.body.title,
-      content: req.body.content,
-      categoryIds: payload.id,
-    },
-  );
+  if (!title || !content || !categoryIds) {
+    return res.status(400).json({
+      message: 'Some required fields are missing',
+    });
+  }
 
-  return res.status(200).json({ post });
+  if (verifyCategory.includes(null)) {
+    return res.status(400).json({ message: 'one or more "categoryIds" not found' });
+  }
+
+  const newPost = await postService.createPost({ title, content, userId, categoryIds });
+  return res.status(201).json(newPost);
 };
 
 const getAllPosts = async (_req, res) => {

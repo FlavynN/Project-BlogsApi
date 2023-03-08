@@ -11,7 +11,8 @@ const login = async (req, res) => {
     });
   }
 
-  const token = createToken(email);
+  const token = createToken(valid);
+  console.log({ token });
 
   res.status(200).json({ token });
 };

@@ -21,13 +21,11 @@ const verifyEmail = async (email) => {
 
 const getUserById = (id) => User.findOne({ where: { id } });
 
-const jao = '';
-
 module.exports = {
   login,
   createUser,
   verifyEmail,
   getUsers,
   getUserById,
-  jao,
+
 };
