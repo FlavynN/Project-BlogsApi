@@ -29,8 +29,23 @@ const getPostByid = (id) => BlogPost.findOne({
   { model: Category, as: 'categories', through: { attributes: [] } }],
 });
 
+const deletePost = async (id, userId) => {
+  const verifyId = await BlogPost.findOne({
+    where: { id },
+  });
+  if (!verifyId) {
+    return { type: 404, message: 'Post does not exist' };
+  }
+  if (verifyId.userId !== userId) {
+    return { type: 401, message: 'Unauthorized user' };
+  }
+  await BlogPost.destroy({ where: { id } });
+  return { type: null };
+};
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostByid,
+  deletePost,
 };
