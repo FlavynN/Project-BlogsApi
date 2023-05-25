@@ -11,8 +11,8 @@ The Blogs Api Project is an API to update a Blog. The objective of the project i
 * Nodemom
 * JWT
 
-## What was build?
-Was build an backend CRUD for a Blog with:
+## What was built?
+Was built an backend CRUD for a Blog with:
 * **Docker Container** 
 * **Mysql database**
 * **API**
